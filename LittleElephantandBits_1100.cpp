@@ -12,16 +12,20 @@ int main() {
     freopen("output.txt", "w", stdout);
     #else
     #endif
-    int t;
-    cin >> t;
-    while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+
+    string s;
+    cin >> s;
+    string res;
+    bool f = true;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '0' && f) {
+            f = false;
+            cout << s.substr(0, i) << s.substr(i+1, s.size() - i + 1) << endl;
+            return 0;
         }
-            t--;
     }
+    cout << s.substr(0, s.size() - 1) << endl;
+
     return 0;
 }

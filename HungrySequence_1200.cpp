@@ -12,16 +12,15 @@ int main() {
     freopen("output.txt", "w", stdout);
     #else
     #endif
-    int t;
-    cin >> t;
-    while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-            t--;
+    
+    int n;
+    cin >> n;
+    vector<bool> p(10000000, true);
+    int cnt = 0;
+    for (int i = 10000000 / 2; cnt < n; i++) {
+        cnt++;
+        cout << i << " ";
     }
+    cout << endl;
     return 0;
 }

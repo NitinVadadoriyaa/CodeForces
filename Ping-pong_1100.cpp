@@ -15,13 +15,10 @@ int main() {
     int t;
     cin >> t;
     while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-            t--;
+        int a,b;
+        cin >> a >> b;
+        cout << a - 1 << " " << b << endl;
+        t--;
     }
     return 0;
 }

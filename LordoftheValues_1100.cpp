@@ -21,6 +21,18 @@ int main() {
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
+        cout << n * 3 << endl;
+        for (int i = 1; i <= (n / 2); i++)
+        {
+            for (int j = 1; j <= 6; j++) {
+                if (j % 2) {
+                    cout << 1;
+                }else
+                    cout << 2;
+                cout << " " << i << " " << (n / 2) + i << endl;
+                
+            }
+        }
             t--;
     }
     return 0;

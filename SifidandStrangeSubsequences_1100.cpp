@@ -14,14 +14,25 @@ int main() {
     #endif
     int t;
     cin >> t;
-    while (t) {
+    while(t) {
         int n;
         cin >> n;
         vector<int> a(n);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n;i++)
             cin >> a[i];
+
+        sort(a.begin(), a.end());
+        int mini = INT_MAX;
+        int i = 1;
+        for (i; i < n; i++)
+        {
+            mini = min(mini, abs(a[i] - a[i - 1]));
+            if (a[i] > mini)
+                break;
         }
-            t--;
+
+        cout << i << endl;
+        t--;
     }
     return 0;
 }

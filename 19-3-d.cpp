@@ -15,13 +15,19 @@ int main() {
     int t;
     cin >> t;
     while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-            t--;
+       ll a,b,c;
+       cin >> a >> b >> c;
+       ll aa = a + c;
+       ll ans1 = 0;
+       ans1 = aa / a;
+       ll ans2 = (b + c) / b;
+       
+       if (((a + c) < b) || ((b + c) < a)) {
+            cout << max(ans1,ans2) << endl;
+       } else {
+           cout << ans1 + ans2 << endl;
+       }
+           t--;
     }
     return 0;
 }

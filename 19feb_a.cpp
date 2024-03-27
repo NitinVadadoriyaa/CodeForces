@@ -15,13 +15,24 @@ int main() {
     int t;
     cin >> t;
     while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+
+        string s;
+        cin >> s;
+        int a = 0, b = 0;
+        for (int i = 0; i < 5; i++)
+        {
+            if (s[i] == 'A')
+                a++;
+            else
+                b++;
         }
-            t--;
+        if (a > b) {
+            cout << 'A' << endl;
+
+        } else {
+            cout << 'B' << endl;
+        }
+        t--;
     }
     return 0;
 }

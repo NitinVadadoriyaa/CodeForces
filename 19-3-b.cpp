@@ -12,16 +12,16 @@ int main() {
     freopen("output.txt", "w", stdout);
     #else
     #endif
-    int t;
-    cin >> t;
-    while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
-        }
-            t--;
-    }
+    // int t;
+    // cin >> t;
+    // while (t) {
+    //     int n;
+    //     cin >> n;
+    //     vector<int> a(n);
+    //     for (int i = 0; i < n; i++) {
+    //         cin >> a[i];
+    //     }
+    //         t--;
+    // }
     return 0;
 }
