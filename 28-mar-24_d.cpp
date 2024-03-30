@@ -24,7 +24,7 @@ bool solve(int n,unordered_map<int, bool> &dp) {
         temp = temp / 10;
     }
     if (f)
-        return dp[n] = true;
+    return dp[n] = true;
 
 
 
