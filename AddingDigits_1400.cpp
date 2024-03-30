@@ -5,7 +5,6 @@ using ll = long long;
 #define mod 1e9 + 7
 
 //ctrl + space to run exsiting file.
-
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
