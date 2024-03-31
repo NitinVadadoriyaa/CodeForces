@@ -10,3 +10,4 @@ git commit -m "$commit_message"
 
 # Step 3: Push changes to the remote repository
 git push -u origin master
+exit
