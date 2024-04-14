@@ -4,7 +4,6 @@ using namespace std;
 using ll = long long;
 int mod = 1e9 + 7;
 
-
 //ctrl + space to run exsiting file.
 
 int main() {
@@ -16,13 +15,18 @@ int main() {
     int t;
     cin >> t;
     while (t) {
-        int n;
-        cin >> n;
-        vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+        int n,m,k;
+        cin >> n >> m >> k;
+        int maxi = ceil(n / (m + 0.0));
+        n = n - maxi;
+        if (k >= n) {
+             cout << "NO" << endl;
+            
+        }else {
+             cout << "YES" << endl;
+
         }
-            t--;
+        t--;
     }
     return 0;
 }
