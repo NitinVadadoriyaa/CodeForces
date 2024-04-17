@@ -18,10 +18,26 @@ int main() {
         int n;
         cin >> n;
         vector<int> a(n);
-        for (int i = 0; i < n; i++) {
-            cin >> a[i];
+        for (int i = 0; i < n; i++)
+        {
+            int num;
+            cin >> num;
+            a[i] = num;
+            // cout << a[i].to_ulong() << endl;
         }
-            t--;
+
+        int i = 0, j = n - 1;
+        int maxi = max(a[0], a[j]);
+        while(i <= j) {
+            if ((a[i] & maxi) == maxi){
+                i++;
+            } else if ((a[j] & maxi) == maxi)
+                j--;
+            else
+                break;
+        }
+        cout << j - i + 1 << endl;
+        t--;
     }
     return 0;
 }
