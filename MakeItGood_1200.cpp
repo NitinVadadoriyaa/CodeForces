@@ -40,10 +40,17 @@ int main() {
             maxi = max(maxi, a[j]);
         }
         int ans = 0;
-        for (int i = 1; i < n - 1; i++)
+        for (int i = n-1; i >= 0; i--)
         {
             if (left_max[i] != -1 && right_max[i] != -1) {
-                ans = i;
+                for (int j = i; j >= 0; j--) {
+                    if (a[i] < a[j]) {
+                        ans = j + 1;
+                        break;
+                        
+                    }
+                }
+                break;
             }
         }
         cout << ans << endl;
