@@ -20,81 +20,63 @@ int main() {
         int n, m;
         cin >> n >> m;
 
-        vector<vector<ll>> d(m, vector<ll>(n));
+        vector<vector<ll>> d(n, vector<ll>(m));
+        typedef pair<ll, pair<int, int>> pp;
+        vector<pp> minM;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                cin >> d[j][i];
+                cin >> d[i][j];
+                minM.push_back({d[i][j], {i, j}});
             }
         }
-        typedef pair<ll, pair<int, int>> pp;
-        priority_queue<pp> maxH;
+        sort(minM.begin(), minM.end());
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                maxH.push({d[i][j],{i,j}});
-                if (maxH.size() > m)
-                    maxH.pop();
-            }
-        }
+        vector<vector<int>> vis(n, vector<int>(m, 0));
 
-        vector<vector<int>> vis(m, vector<int>(n, 0));
-
-        while (maxH.size())
+        vector<int> getIt(m, 0);
+        for (int p = 0; p < m; p++)
         {
-            int i = maxH.top().second.first;
-            int j = maxH.top().second.second;
-            maxH.pop();
+            int i = minM[p].second.first;
+            int j = minM[p].second.second;
             vis[i][j] = 1; // minimum element
+            getIt[j] = 1;
             // cout << i << j << endl;
+            // cout << minM[p].first << endl;
+
         }
 
         vector<vector<ll>> ans(n, vector<ll>(m));
-
-        for (int i = 0; i < m; i++) {
-            ans[0][i] = d[i][0];
-            bool isMinTaken = (vis[i][0] == 1) ? true : false;
-            vis[i][0] = 2; // this cell chosen
-            
-
-
-            for (int p = 1; p < n; p++)
-            {
-                int x, y;
-
-                for (int q = 0; q < m; q++)
-                {
-                    if (vis[q][p] == 2) continue;
-                    if (vis[q][p] == 1) {
-                        x = q;
-                        y = p;
-
-                        if (isMinTaken)
-                            continue;
-                        else
-                            isMinTaken = true;
-                        break;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++) {
+                if (vis[i][j] == 1) {
+                    if (getIt[j] == 1) {
+                        getIt[j] = 2;
                     }
-                    x = q;
-                        y = p;
-                    break;
-                }
-                // cout << x << y << " ";
-                vis[x][y] = 2;
-                ans[p][i] = d[x][y];
+                    else
+                    {
+                        for (int p = 0; p < m; p++) {
+                            if (getIt[p] == 0) {
+                                swap(d[i][p], d[i][j]);
+                                getIt[p] = 1;
+                                break;
+                            }
+                        }
+
+                    }
+                } 
             }
         }
-
-        for (int i = 0; i < n; i++) {
-            ll mini = INT_MAX;
-            for (int j = 0; j < m; j++)
+            for (int i = 0; i < n; i++)
             {
-                // cout << ans[i][j];
-                mini = min(mini, ans[i][j]);
-                if (m - j != 1)
-                    cout << " ";
-            }
-                cout << mini;
+                ll mini = INT_MAX;
+                for (int j = 0; j < m; j++)
+                {
+                    cout << d[i][j];
+                    if (m - j != 1)
+                        cout << " ";
+                }
             if (n-i != 1)
             cout << endl;
         }
