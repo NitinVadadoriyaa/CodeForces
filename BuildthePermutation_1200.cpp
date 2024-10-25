@@ -26,7 +26,6 @@ int main() {
             }
             cout << endl;
             t--;
-            continue;
         }
         int max = 2 * ceil((n - 2) / 2.0);
         if ((n-2) % 2)
