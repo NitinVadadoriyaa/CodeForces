@@ -17,16 +17,16 @@ int main() {
     int t;
     cin >> t;
     while(t) {
-        int n, l, r;
+        ll n, l, r;
         cin >> n >> l >> r;
-        vector<int> arr(n);
+        vector<ll> arr(n);
         for (int i = 0; i < n; i++)
             cin >> arr[i];
         sort(arr.begin(), arr.end());
 
         // unordered_map<int, int> freq;
-        int lowerBoun = 0;
-        int i = 0, j = n - 1;
+        ll lowerBoun = 0;
+        ll i = 0, j = n - 1;
         // ai + aj < l
         while(i < j) {
             if (arr[i] + arr[j] < l) {
@@ -35,7 +35,7 @@ int main() {
             } else
                 j--;
         }
-
+        i = 0, j = n - 1;
         // ai + aj > r
         while(i < j) {
             if (arr[i] + arr[j] > r) {
@@ -45,7 +45,7 @@ int main() {
                 i++;
         }
 
-        cout << (n * (n - 1) / 2) - lowerBoun << endl;
+        cout << (n * (n - 1) / (ll)2) - lowerBoun << endl;
         t--;
     }
     return 0;
