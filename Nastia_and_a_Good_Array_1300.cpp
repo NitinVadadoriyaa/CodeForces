@@ -52,6 +52,7 @@ int main() {
                 }
             }
 
+        
             cout << ans.size() << endl;
             for (auto &it : ans) {
                 cout << it[0] << " " << it[1] << " " << it[2] << " " << it[3] << endl;
