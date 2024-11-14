@@ -16,13 +16,28 @@ int main() {
     int t;
     cin >> t;
     while (t) {
-        int n;
-        cin >> n;
+        int n,k;
+        cin >> n >> k;
         vector<int> a(n);
         for (int i = 0; i < n; i++) {
             cin >> a[i];
         }
-            t--;
+        sort(a.begin(), a.end());
+
+        int ans = 0;
+        int right = n-1;
+        int left = n - k - 1;
+        for (int i = k; i > 0; i--)
+        {
+            int x = a[right--];
+
+            int y = a[left--];
+            ans += y / x;
+        }
+        for (int i = left; i >= 0; i--)
+            ans += a[i];
+        cout << ans << endl;
+        t--;
     }
     return 0;
 }
