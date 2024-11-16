@@ -37,7 +37,7 @@ int main() {
 
         int ans = str.size() + 1;
         
-        for (ll two = 1; two <= 1e15; two = two * 2)
+        for (ll two = 1; two <= 1e18; two = two * 2)
         {
             // cout << two << endl;
             ans = min(ans, check(two, str));
