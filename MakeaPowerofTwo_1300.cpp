@@ -36,11 +36,12 @@ int main() {
         string str = to_string(n);
 
         int ans = str.size() + 1;
-        ans = min(ans, check(0, str));
-        for (ll two = 1; two <= INT_MAX; two = two * 2)
+        
+        for (ll two = 1; two <= 1e15; two = two * 2)
         {
             // cout << two << endl;
             ans = min(ans, check(two, str));
+            
         }
         cout << ans << endl;
         t--;
