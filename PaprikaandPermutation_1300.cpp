@@ -40,15 +40,15 @@ int main() {
                 remainingEle.push_back(i);
             }
         }
-        sort(remainingEle.begin(), remainingEle.end(), greater());
+        sort(remainingEle.begin(), remainingEle.end());
         vector<int> re;
         for (auto el : extrEle) {
             re.push_back(el - ((el / 2) + 1));
         }
-        sort(re.begin(), re.end(), greater());
+        sort(re.begin(), re.end());
 
         int ans = remainingEle.size();
-        for (int i = 0; i < re.size(); i++)
+        for (int i = re.size() - 1; i >= 0; i--)
         {
             if (re[i] < remainingEle[i]) {
                 ans = -1;
