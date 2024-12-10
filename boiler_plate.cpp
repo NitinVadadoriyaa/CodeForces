@@ -4,7 +4,7 @@
 using namespace std;
 using ll = long long;
 int mod = 1e9 + 7;
-
+typedef pair<int, int> pp;
 
 //ctrl + space to run exsiting file.
 
