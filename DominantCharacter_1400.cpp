@@ -7,14 +7,19 @@ int mod = 1e9 + 7;
 typedef pair<int, int> pp;
 
 //ctrl + space to run exsiting file.
-void find(string &s,int n,int &ans) {
-    for (int i = 1; i < n; i++) {
-        if (s[i] == 'a' && s[i-1] == 'a') {
-            ans = 2;
-            break;
+bool subStr(string &str,string &s) {
+    // int i = 0, j = 0;
+    for (int i = 0; i < str.size(); i++) {
+        int j = 0,k = i;
+        while (j < s.size() && k < str.size() && str[k] == s[j]) {
+            k++;
+            j++;
         }
+        if (s.size() == j)
+            return true;
+        
     }
-
+    return false;
 }
 int main() {
     #ifndef ONLINE_JUDGE
@@ -31,38 +36,14 @@ int main() {
         cin >> str;
         int i = 0, j = 0;
         int ans = INT_MAX;
-        vector<int> fre(3, 0);
-        while (j < n)
+        vector<string> db = {"aa", "aba", "aca", "abca", "acba", "abbacca", "accabba"};
+        for (auto s : db)
         {
-            fre[str[j] - 'a']++;
-                        // cout << j;
-            if (fre[0] > fre[1] && fre[0] > fre[2]) {
-                if ((j - i + 1) >= 2) {
-                     while((j - i + 1) >= 2 && (fre[0] > fre[1] && fre[0] > fre[2])) {
-                        ans = min(ans, j - i + 1);
-                        fre[str[i] - 'a']--;
-                        i++;
-                    }
-                }
-            } else {
-                // while((j - i + 1) > 3) {
-                //     fre[str[i] - 'a']--;
-                //     i++;
-                //     if (fre[0] > fre[1] && fre[0] > fre[2]) {
-                //         ans = min(ans, j - i + 1);
-                //     }
-                // }
+            if (subStr(str,s)) {
+                ans = s.size();
+                break;
             }
-            j++;
         }
-        while((j - i) >= 2) {
-                    fre[str[i] - 'a']--;
-                    i++;
-                    if ((fre[0] > fre[1] && fre[0] > fre[2]) && ((j-i + 1) >= 2)) {
-                        ans = min(ans, j - i + 1);
-                    }
-        }
-        find(str, n, ans);
         cout << ((ans == INT_MAX) ? (-1) : (ans)) << endl;
         t--;
     }
