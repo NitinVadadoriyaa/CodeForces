@@ -20,7 +20,7 @@ int main() {
         int n;
         cin >> n;
         
-        unordered_map<int, int> fre;
+        map<int, int> fre;
         for (int i = 0; i < n; i++)
         {
             int num;
@@ -38,36 +38,17 @@ int main() {
             maxH.pop();
             int secHightes = maxH.top();
             maxH.pop();
-            int thirHighest;
-            if (maxH.size())
-            {
-                thirHighest = maxH.top();
-            } else {
-                int mini = min(firHightes, secHightes);
-                int deletNeed = mini;
-
-                firHightes -= deletNeed;
-                secHightes -= deletNeed;
-                if (firHightes != 0)
-                    maxH.push(firHightes);
-                if (secHightes != 0)
-                    maxH.push(secHightes);
-                if (maxH.size() == 0) maxH.push(0);
-                continue;
-            }
-
-            int mini = min(firHightes, secHightes);
-            int deletNeed = mini - thirHighest + 1;
-            
-            firHightes -= deletNeed;
-            secHightes -= deletNeed;
+            int thirHighest;    
+            firHightes -= 1;
+            secHightes -= 1;
             if (firHightes != 0)
                 maxH.push(firHightes);
             if (secHightes != 0)
                 maxH.push(secHightes);
         }
-        // cout << maxH.size() << endl;
-                cout << maxH.top() << endl;
+        if (maxH.size() == 0)
+            maxH.push(0);
+        cout << maxH.top() << endl;
 
         t--;
     }
