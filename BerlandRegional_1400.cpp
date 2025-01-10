@@ -20,7 +20,7 @@ int main() {
         int n;
         cin >> n;
         vector<pp> a(n);
-        map<int, vector<ll>> hash;
+        unordered_map<int, vector<ll>> hash;
         for (int i = 0; i < n; i++)
         {
             cin >> a[i].first;
@@ -30,28 +30,32 @@ int main() {
             cin >> a[i].second;
             hash[a[i].first].push_back(a[i].second);
         }
-        map<int, vector<ll>> preHash;
-        for (auto it : hash) {
+        unordered_map<int, vector<ll>> preHash;
+        int maxSize = 1;
+        for (auto it : hash)
+        {
             sort(it.second.begin(), it.second.end(),greater());
             ll sum = 0;
+            maxSize = max(maxSize, (int)it.second.size());
             for (int i = 0; i < it.second.size(); i++)
             {
                 sum += it.second[i];
                 preHash[it.first].push_back(sum);
             }
         }
-
-        for (int i = 1; i <= n; i++)
+        // cout << maxSize << endl;
+        vector<ll> ans(n, 0);
+        for (auto it : preHash) // O(K), k is number of university
         {
-            ll ans = 0;
-            for (auto it : preHash)
-            {
-                int ind = ((it.second.size() / i) * i) - 1;
-                if (ind >= 0) {
-                    ans += it.second[ind];
-                }
-            }
-            cout << ans << " ";
+           // each university have x students
+           for (int i = 1; i <= it.second.size(); i++)
+           { // at most x group contribute it....
+               ans[i - 1] += (it.second[ ((it.second.size() / i) * i) - 1] );
+           }
+            //    cout << ans << " ";
+        }
+        for (auto it : ans) {
+            cout << it << " ";
         }
         cout << endl;
             t--;
